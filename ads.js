@@ -4,151 +4,65 @@
 ========================================= */
 
 
-/* =========================================
-   1. DIRECT CLICK VIDEO ADS
-   Iklan muncul saat user klik video
-========================================= */
+// ===============================
+// VIDEO CLICK ADS
+// Fungsi: buka iklan saat user klik video (sekali saja)
+// ===============================
 
-const VIDEO_AD = "https://www.profitablecpmratenetwork.com/gdp3y55e1?key=276987812d5d44414d3c88174a146b38";
+const VIDEO_AD = "https://omg10.com/4/10902178";
+let videoClicked = false;
 
-let clicked = false;
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.getElementById("video");
 
-document.addEventListener("DOMContentLoaded", function(){
-
-const video = document.getElementById("video");
-
-if(video){
-
-video.addEventListener("click", function(){
-
-if(!clicked){
-clicked = true;
-window.open(VIDEO_AD,'_blank');
-}
-
-});
-
-}
-
+  if (video) {
+    video.addEventListener("click", () => {
+      if (!videoClicked) {
+        videoClicked = true;
+        window.open(VIDEO_AD, "_blank");
+      }
+    });
+  }
 });
 
 
-/* =========================================
-   2. POPUP ADS (AUTO OPEN)
-   Iklan muncul setelah beberapa detik
-========================================= */
+// ===============================
+// PAGE CLICK ADS
+// Fungsi: popup iklan saat klik pertama user
+// ===============================
 
-const POPUP_AD = "https://otieu.com/4/10413465";
-const POPUP_DELAY = 15000;
-
-setTimeout(function(){
-window.open(POPUP_AD,'_blank');
-}, POPUP_DELAY);
+document.addEventListener("click", () => {
+  window.open("https://publishedelegance.com/qgv3xdwkgz?key=6b1551c76dea12f5ce6069844b58a4e4", "_blank");
+}, { once: true });
 
 
+// ===============================
+// TAB FOCUS ADS
+// Fungsi: iklan muncul saat user kembali ke tab (sekali saja)
+// ===============================
 
-/* =========================================
-   3. GEO ADS (IKLAN BERDASARKAN NEGARA)
-   Indonesia dan luar Indonesia beda iklan
-========================================= */
+let focusShown = false;
 
-var LINK_ID  = "https://otieu.com/4/10413465";
-var LINK_ALL = "https://oversightexcitement.com/ecpp2d2yf?key=780644cc073355ffdcb57a8c6dbbd9b4";
-
-var DELAY = 20000;
-
-function geoip(g){
-
-setTimeout(function(){
-
-if (g && g.country === "ID") {
-
-window.open(LINK_ID, "_blank");
-
-} else {
-
-window.open(LINK_ALL, "_blank");
-
-}
-
-}, DELAY);
-
-}
+window.addEventListener("focus", () => {
+  if (!focusShown) {
+    focusShown = true;
+    window.open("https://omg10.com/4/10902178", "_blank");
+  }
+});
 
 
-/* =========================================
-   4. LOAD GEO SCRIPT
-   Script ini wajib untuk GEO ADS
-========================================= */
+// ===============================
+// BANNER ADS (NATIVE / SCRIPT)
+// Fungsi: load banner dari ad network
+// ===============================
 
-var geoScript = document.createElement("script");
+const script = document.createElement("script");
+script.async = true;
+script.dataset.cfasync = "false";
+script.src = "https://publishedelegance.com/43f939c05389467daaa486c01c358487/invoke.js";
+document.body.appendChild(script);
 
-geoScript.src = "https://get.geojs.io/v1/ip/country.js?callback=geoip";
-
-document.body.appendChild(geoScript);
-
-
-
-/* =========================================
-   5. PAGE CLICK ADS
-   Iklan muncul saat user klik halaman
-========================================= */
-
-document.addEventListener("click", function(){
-
-window.open("https://otieu.com/4/10413465",'_blank');
-
-},{ once:true });
-
-
-
-/* =========================================
-   6. SCROLL ADS
-   Iklan muncul saat user scroll
-========================================= */
-
-window.addEventListener("scroll", function(){
-
-window.open("https://otieu.com/4/10413465",'_blank');
-
-},{ once:true });
-
-
-
-/* =========================================
-   7. TAB FOCUS ADS
-   Iklan muncul saat user kembali ke tab
-========================================= */
-
-window.addEventListener("focus", function(){
-
-window.open("https://otieu.com/4/10413465",'_blank');
-
-},{ once:true });
-
-/* =========================================
-   8. BANNER IKLAN POJOK BAWAH
-   Iklan banner floating di pojok bawah
-========================================= */
-
-const BANNER_AD_IMAGE = "https://contoh.com/320x50?text=Banner+Ads";
-
-/* Buat banner */
-const banner = document.createElement("div");
-
-banner.innerHTML = `
-<div id="floating-banner">
-<a href="${BANNER_AD_LINK}" target="_blank">
-<img src="${BANNER_AD_IMAGE}">
-</a>
-<span id="close-banner">✕</span>
-</div>
-`;
-
-document.body.appendChild(banner);
-
-
-/* Tombol close banner */
-document.getElementById("close-banner").onclick = function(){
-document.getElementById("floating-banner").style.display = "none";
-};
+// container untuk banner
+const container = document.createElement("div");
+container.id = "container-43f939c05389467daaa486c01c358487";
+document.body.appendChild(container);
