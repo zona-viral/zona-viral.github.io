@@ -27,14 +27,12 @@ body {
 /* WRAP */
 .wrap {
   padding: 20px;
-  max-width: 900px;
   margin: auto;
 }
 
 .video-box {
   position: relative;
   width: 100%;
-  max-width: 400px; /* biar tidak terlalu besar di desktop */
   margin: auto;
 
   aspect-ratio: 9 / 16; /* 🔥 ini kuncinya */
