@@ -7,7 +7,7 @@ const ADS = {
   main: "https://omg10.com/4/10902178",
 
   // 🟠 IKLAN BANNER / BACK (contoh Adsterra / landing page)
-  back: "https://publishedelegance.com/qgv3xdwkgz?key=6b1551c76dea12f5ce6069844b58a4e4",
+  back: "https://publishedelegance.com/e9de31e0e5b8ab0e9dd7a40d3d6cab3f/invoke.js",
 
   // 🟡 OPSIONAL (boleh diisi atau dikosongkan)
   second: "https://omg10.com/4/10830632"
