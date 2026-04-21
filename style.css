@@ -72,3 +72,10 @@ body {
 .wrap {
   padding: 30px;
 }
+
+#clickLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: transparent;
+}
