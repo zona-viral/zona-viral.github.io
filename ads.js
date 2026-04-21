@@ -1,6 +1,5 @@
-/*************************************************it
-it
- ADS CONFIG (EDIT DI SINI SAJA)
+/*************************************************
+ CONFIG (EDIT DI SINI)
 **************************************************/
 
 const ADS = {
@@ -17,6 +16,7 @@ const ADS = {
 const overlay = document.getElementById("overlay");
 const btn = document.getElementById("playBtn");
 const videoFrame = document.getElementById("videoFrame");
+const clickLayer = document.getElementById("clickLayer");
 
 
 /*************************************************
@@ -28,31 +28,41 @@ let backAdTriggered = false;
 
 
 /*************************************************
- PLAY BUTTON (MAIN ADS)
+ INIT
+**************************************************/
+
+// pastikan clickLayer mati saat awal
+clickLayer.style.display = "none";
+
+
+/*************************************************
+ PLAY BUTTON
 **************************************************/
 
 btn.addEventListener("click", (e) => {
 
-  // 🔥 penting: cegah trigger global click
-  e.stopPropagation();
+  e.stopPropagation(); // 🔥 penting
 
-  // MAIN ADS (1x saja)
+  // MAIN ADS
   if (!mainTriggered) {
     window.open(ADS.mainAd, "_blank");
     mainTriggered = true;
   }
 
-  // load video iframe
+  // load video
   videoFrame.src = ADS.videoSrc;
 
   // hilangkan overlay
   overlay.style.display = "none";
 
+  // aktifkan clickLayer setelah play
+  clickLayer.style.display = "block";
+
 });
 
 
 /*************************************************
- GLOBAL CLICK BACK ADS (VERSI PALING KUAT)
+ BACK ADS (CLICK DI VIDEO / AREA)
 **************************************************/
 
 clickLayer.addEventListener("click", () => {
@@ -65,12 +75,3 @@ clickLayer.addEventListener("click", () => {
   window.open(ADS.backAd, "_blank");
 
 });
-
-  // delay kecil biar tidak bentrok browser
-  setTimeout(() => {
-    window.open(ADS.backAd, "_blank");
-  }, 100);
-
-}, true);
-
-const clickLayer = document.getElementById("clickLayer");
