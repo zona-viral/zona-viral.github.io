@@ -7,18 +7,51 @@
 <title>Video Player</title>
 
 <link rel="stylesheet" href="style.css">
-</head>
-  <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js')
-    .then(function(reg) {
-      console.log('Service Worker registered', reg);
-    })
-    .catch(function(err) {
-      console.log('Service Worker error', err);
-    });
+
+<style>
+/* FIX VIDEO FULL */
+.video-box {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
 }
-</script>
+
+.video-box iframe {
+  width: 100%;
+  height: 220px; /* bisa kamu ubah */
+  border: none;
+}
+
+/* overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: rgba(0,0,0,0.5);
+}
+
+.click-layer {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:5;
+}
+
+/* banner */
+.native-banner {
+  margin: 15px;
+  text-align:center;
+}
+</style>
+
+</head>
 
 <body>
 
@@ -32,47 +65,48 @@ if ('serviceWorker' in navigator) {
 
     <iframe id="videoFrame" allowfullscreen></iframe>
 
-    <!-- overlay -->
     <div id="overlay" class="overlay">
       <button id="playBtn">▶ Play Video</button>
     </div>
 
-    <!-- click layer -->
     <div id="clickLayer" class="click-layer"></div>
 
   </div>
 
 </main>
 
-<!-- native banner ads -->
+<!-- ✅ NATIVE BANNER -->
 <div class="native-banner">
-
-  <script async="async" data-cfasync="false"
+  <script async data-cfasync="false"
   src="https://publishedelegance.com/43f939c05389467daaa486c01c358487/invoke.js"></script>
-
   <div id="container-43f939c05389467daaa486c01c358487"></div>
-
 </div>
 
 <script src="ads.js"></script>
 
+<!-- ✅ MONETAG VIGNETTE (FIX) -->
+<script>
+function loadVignette(){
+  (function(s){
+    s.dataset.zone='10908249';
+    s.src='https://n6wxm.com/vignette.min.js';
+  })(document.body.appendChild(document.createElement('script')));
+}
+</script>
+
+<!-- ✅ TRIGGER SAAT KLIK VIDEO -->
+<script>
+document.getElementById("clickLayer").addEventListener("click", function(){
+  loadVignette();
+});
+</script>
+
+<!-- ✅ SERVICE WORKER -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
+</script>
+
 </body>
 </html>
-
-<div class="wrap">
-  <!-- semua konten -->
-</div>
-
-<div class="sticky-banner">
-  ...
-</div>
-
-<!-- monetag vintage banner ads -->
-<a href="https://n6wxm.com/vignette.min.js" target="_blank">
-
-<script>
-(function(s){
-  s.dataset.zone='10908249',
-  s.src='https://n6wxm.com/vignette.min.js'
-})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-</script>
