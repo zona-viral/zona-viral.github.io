@@ -1,39 +1,25 @@
-/*************************************************
- CONFIG (EDIT DI SINI)
-**************************************************/
-
 const ADS = {
   mainAd: "https://omg10.com/4/10902178",
   backAd: "https://omg10.com/4/10830632",
   videoSrc: "https://aceimg.com/upload/?f=c5b01a9e8.mp4"
 };
 
-
-/*************************************************
- ELEMENT
-**************************************************/
-
 const overlay = document.getElementById("overlay");
 const btn = document.getElementById("playBtn");
 const videoFrame = document.getElementById("videoFrame");
 const clickLayer = document.getElementById("clickLayer");
 
-
-/*************************************************
- STATE
-**************************************************/
-
 let mainTriggered = false;
 let backAdTriggered = false;
 
-
 /*************************************************
- INIT
+ INIT (SUPER PENTING)
 **************************************************/
 
-// pastikan clickLayer mati saat awal
+// saat awal:
+// iframe & clickLayer TIDAK BOLEH TERIMA KLIK
+videoFrame.style.pointerEvents = "none";
 clickLayer.style.display = "none";
-
 
 /*************************************************
  PLAY BUTTON
@@ -41,9 +27,9 @@ clickLayer.style.display = "none";
 
 btn.addEventListener("click", (e) => {
 
-  e.stopPropagation(); // 🔥 penting
+  e.stopPropagation();
 
-  // MAIN ADS
+  // main ads
   if (!mainTriggered) {
     window.open(ADS.mainAd, "_blank");
     mainTriggered = true;
@@ -55,14 +41,15 @@ btn.addEventListener("click", (e) => {
   // hilangkan overlay
   overlay.style.display = "none";
 
-  // aktifkan clickLayer setelah play
+  // aktifkan interaksi setelah play
+  videoFrame.style.pointerEvents = "auto";
   clickLayer.style.display = "block";
 
 });
 
 
 /*************************************************
- BACK ADS (CLICK DI VIDEO / AREA)
+ BACK ADS
 **************************************************/
 
 clickLayer.addEventListener("click", () => {
