@@ -9,28 +9,21 @@
 // Fungsi: buka iklan saat user klik video (sekali saja)
 // ===============================
 
-const VIDEO_AD = "https://omg10.com/4/10902178";
-let videoClicked = false;
-
-document.addEventListener("DOMContentLoaded", () => {
-  const wrapper = document.getElementById("videoWrapper");
-
-  wrapper.addEventListener("click", () => {
-    if (!videoClicked) {
-      videoClicked = true;
-      window.open(VIDEO_AD, "_blank");
-    }
-  });
+document.addEventListener("click", () => {
+  if (!window.adOpened) {
+    window.adOpened = true;
+    window.open("https://omg10.com/4/10902178", "_blank");
+  }
 });
 
-const btn = document.getElementById("playBtn");
 const video = document.getElementById("video");
 
-btn.addEventListener("click", () => {
-  window.open(VIDEO_AD, "_blank");
-  video.play();
+video.addEventListener("click", () => {
+  if (!window.adOpened) {
+    window.adOpened = true;
+    window.open("https://omg10.com/4/10902178", "_blank");
+  }
 });
-
 
 // ===============================
 // PAGE CLICK ADS
