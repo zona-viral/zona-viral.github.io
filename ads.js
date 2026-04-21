@@ -53,3 +53,15 @@ window.addEventListener("focus", () => {
 
 video.setAttribute("crossorigin", "anonymous");
 video.load();
+
+const video = document.getElementById("video");
+const overlay = document.getElementById("overlay");
+const btn = document.getElementById("playBtn");
+
+btn.addEventListener("click", () => {
+
+  overlay.style.display = "none";
+
+  video.load();   // 🔥 penting biar render ulang
+  video.play();
+});
