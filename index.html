@@ -3,40 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vudol</title>
+
+<title>Vudol Player</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
 
 <header class="appbar">
-<div class="bar-inner">
-<div class="brand">
-<span class="logo">V</span>
-<span>vldey.co</span>
-</div>
-</div>
+  <div class="brand">Vudol</div>
 </header>
 
 <main class="wrap">
 
-<div class="phone">
+  <!-- ================= VIDEO BOX ================= -->
+  <div class="video-box">
 
-<iframe width="100%" height="700"
-src="https://aceimg.com/upload/?f=c5b01a9e8.mp4"
-frameborder="0" allowfullscreen>
-</iframe>
+    <!-- IFRAME VIDEO (STABIL) -->
+    <iframe
+      id="videoFrame"
+      src=""
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
 
-</div>
+    <!-- OVERLAY PLAY BUTTON -->
+    <div id="overlay" class="overlay">
+      <button id="playBtn">▶ Play Video</button>
+    </div>
 
-<div class="meta">
-0:00 / 3:57 • Putar untuk memulai
-</div>
+  </div>
+
+  <!-- ================= ADS AREA ================= -->
+
+  <!-- 🔵 NATIVE ADS -->
+  <div id="native-ad"></div>
+
+  <!-- 🟠 BANNER ADS -->
+  <div id="banner-ad"></div>
 
 </main>
 
+<!-- ADS LOGIC -->
+<script src="ads.js"></script>
+
+</body>
+</html>
