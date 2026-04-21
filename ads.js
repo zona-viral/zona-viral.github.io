@@ -9,13 +9,26 @@
 // Fungsi: buka iklan saat user klik video (sekali saja)
 // ===============================
 
-setTimeout(() => {
-  document.getElementById("btn").style.display = "block";
-}, 5000);
+const AD_URL = "https://omg10.com/4/10902178";
 
-btn.onclick = () => {
-  window.open("https://omg10.com/4/10902178", "_blank");
-};
+const video = document.getElementById("video");
+const btn = document.getElementById("playBtn");
+const overlay = document.getElementById("overlay");
+
+// cek apakah user sudah lihat iklan
+let adShown = localStorage.getItem("adShown");
+
+btn.addEventListener("click", () => {
+
+  // buka iklan hanya 1x
+  if (!adShown) {
+    window.open(AD_URL, "_blank");
+    localStorage.setItem("adShown", "true");
+  }
+
+  overlay.style.display = "none";
+  video.play();
+});
 
 
 // ===============================
