@@ -96,26 +96,18 @@ body {
 /* ========================= */
 
 .sticky-banner {
-  position: fixed;
+  position: sticky;
   bottom: 0;
-  left: 0;
-  width: 100%;
 
+  width: 100%;
   background: #000;
-  padding: 8px 12px;
+  padding: 10px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  z-index: 5;
-  box-shadow: 0 -5px 20px rgba(0,0,0,0.6);
-}
-
-/* gambar/banner */
-.sticky-banner img {
-  height: 50px;
-  width: auto;
+  z-index: 1;
 }
 
 /* teks (optional kalau ada) */
