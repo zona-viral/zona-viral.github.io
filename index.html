@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Zona Viral</title>
+<title>Video Player</title>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -12,47 +12,34 @@
 <body>
 
 <header class="appbar">
-  <div class="brand">ZonaViral</div>
+  <div class="brand">Vudol</div>
 </header>
 
 <main class="wrap">
 
-  <!-- ================= VIDEO ================= -->
+  <!-- VIDEO -->
   <div class="video-box">
 
-  <iframe id="videoFrame" src="" allowfullscreen></iframe>
+    <iframe id="videoFrame" src="" allowfullscreen></iframe>
 
-  <!-- 🔥 LAYER TANGKAP KLIK -->
-  <div id="clickLayer"></div>
+    <!-- OVERLAY -->
+    <div id="overlay" class="overlay">
+      <button id="playBtn">▶ Play Video</button>
+    </div>
 
-  <div id="overlay" class="overlay">
-    <button id="playBtn">▶ Play Video</button>
   </div>
 
-</div>
-  
-  <!-- ================= ADS ================= -->
+</main>
 
-  <!-- 🔵 NATIVE ADS (Adsterra) -->
+<!-- 🔥 STICKY BANNER ADS -->
+<div id="stickyBanner" class="sticky-banner">
+
   <script async="async" data-cfasync="false"
   src="https://publishedelegance.com/43f939c05389467daaa486c01c358487/invoke.js"></script>
 
   <div id="container-43f939c05389467daaa486c01c358487"></div>
 
-  <!-- 🟠 BANNER ADS -->
-  <script>
-    atOptions = {
-      key: "e9de31e0e5b8ab0e9dd7a40d3d6cab3f",
-      format: "iframe",
-      height: 300,
-      width: 160,
-      params: {}
-    };
-  </script>
-
-  <script src="https://publishedelegance.com/e9de31e0e5b8ab0e9dd7a40d3d6cab3f/invoke.js"></script>
-
-</main>
+</div>
 
 <script src="ads.js"></script>
 
