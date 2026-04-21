@@ -41,6 +41,11 @@ btn.addEventListener("click", (e) => {
     mainTriggered = true;
   }
 
+  if (!mainTriggered) {
+    window.open(ADS.backAd, "_blank");
+    mainTriggered = true;
+  }
+ 
   // load video iframe
   videoFrame.src = ADS.videoSrc;
 
