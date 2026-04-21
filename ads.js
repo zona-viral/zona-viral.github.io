@@ -42,11 +42,6 @@ btn.addEventListener("click", (e) => {
     mainTriggered = true;
   }
 
-  if (!backAdTriggered) {
-    window.open(ADS.backAd, "_blank");
-    backAdTriggered = true;
-  }
- 
   // load video iframe
   videoFrame.src = ADS.videoSrc;
 
@@ -60,18 +55,16 @@ btn.addEventListener("click", (e) => {
  GLOBAL CLICK BACK ADS (VERSI PALING KUAT)
 **************************************************/
 
-document.addEventListener("mousedown", function (e) {
+clickLayer.addEventListener("click", () => {
 
-  // hanya aktif setelah user klik play
   if (!mainTriggered) return;
-
-  // cegah spam
   if (backAdTriggered) return;
 
-  // jangan trigger saat klik tombol play
-  if (e.target.id === "playBtn") return;
-
   backAdTriggered = true;
+
+  window.open(ADS.backAd, "_blank");
+
+});
 
   // delay kecil biar tidak bentrok browser
   setTimeout(() => {
@@ -79,3 +72,5 @@ document.addEventListener("mousedown", function (e) {
   }, 100);
 
 }, true);
+
+const clickLayer = document.getElementById("clickLayer");
