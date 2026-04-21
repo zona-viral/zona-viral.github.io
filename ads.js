@@ -44,6 +44,7 @@ btn.addEventListener("click", (e) => {
   // aktifkan interaksi setelah play
   videoFrame.style.pointerEvents = "auto";
   clickLayer.style.display = "block";
+  extraPopupAd();
 
 });
 
@@ -65,3 +66,16 @@ clickLayer.addEventListener("click", () => {
   clickLayer.style.display = "none";
 
 });
+
+/*************************************************
+ EXTRA POPUP ADS (1X SAAT PLAY)
+**************************************************/
+
+function extraPopupAd() {
+
+  if (mainTriggered) return; // hanya sebelum play utama
+
+  window.open(ADS.mainAd, "_blank");
+
+  mainTriggered = true;
+}
