@@ -3,32 +3,29 @@ const ADS = {
   back: "https://omg10.com/4/10830632"
 };
 
+const overlay = document.getElementById("overlay");
 const btn = document.getElementById("playBtn");
 const video = document.getElementById("video");
 
-let mainShown = false;
-let backShown = false;
+let shown = false;
 
-/* PLAY BUTTON */
+/* klik tombol palsu */
 btn.addEventListener("click", () => {
 
-  if (!mainShown) {
+  if (!shown) {
     window.open(ADS.main, "_blank");
-    mainShown = true;
+    shown = true;
   }
 
+  overlay.style.display = "none";
   video.play();
 });
 
-/* BACK AD */
+/* back ad */
 window.addEventListener("focus", () => {
-
-  if (mainShown && !backShown) {
-    backShown = true;
-
+  if (shown) {
     setTimeout(() => {
       window.open(ADS.back, "_blank");
     }, 1500);
   }
-
 });
