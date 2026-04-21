@@ -51,3 +51,13 @@ clickLayer.addEventListener("click", () => {
   // disable click layer after use
   clickLayer.style.display = "none";
 });
+
+window.addEventListener("load", () => {
+
+  const banner = document.getElementById("stickyBanner");
+
+  if (banner) {
+    document.body.appendChild(banner);
+  }
+
+});
