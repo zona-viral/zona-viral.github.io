@@ -1,12 +1,49 @@
-<div class="video-box">
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <iframe id="videoFrame" src="" allowfullscreen></iframe>
+<title>Video Player</title>
 
-  <div id="overlay" class="overlay">
-    <button id="playBtn">▶ Play Video</button>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="appbar">
+  <div class="brand">Vudol</div>
+</header>
+
+<main class="wrap">
+
+  <div class="video-box">
+
+    <iframe id="videoFrame" allowfullscreen></iframe>
+
+    <!-- overlay -->
+    <div id="overlay" class="overlay">
+      <button id="playBtn">▶ Play Video</button>
+    </div>
+
+    <!-- click layer -->
+    <div id="clickLayer" class="click-layer"></div>
+
   </div>
 
-  <!-- FIX: layer klik video -->
-  <div id="clickLayer" class="click-layer"></div>
+</main>
+
+<!-- sticky banner ads -->
+<div id="stickyBanner" class="sticky-banner">
+
+  <script async="async" data-cfasync="false"
+  src="https://publishedelegance.com/43f939c05389467daaa486c01c358487/invoke.js"></script>
+
+  <div id="container-43f939c05389467daaa486c01c358487"></div>
 
 </div>
+
+<script src="ads.js"></script>
+
+</body>
+</html>
