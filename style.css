@@ -60,3 +60,10 @@ video {
   border-radius: 8px;
   cursor: pointer;
 }
+
+#clickLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  cursor: pointer;
+}
