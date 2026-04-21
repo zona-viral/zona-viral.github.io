@@ -35,7 +35,6 @@ btn.addEventListener("click", () => {
 /*************************************************
  BACK ADS (SAFE - 100% NOT BLOCKED)
 **************************************************/
-
 function showBackAdButton() {
 
   if (document.getElementById("backAdBtn")) return;
@@ -43,7 +42,7 @@ function showBackAdButton() {
   const btn = document.createElement("div");
   btn.id = "backAdBtn";
 
-  btn.innerText = "▶ Next / Bonus Video";
+  btn.innerText = "▶ Klik untuk Video Selanjutnya";
 
   btn.style.cssText = `
     position: fixed;
@@ -59,9 +58,13 @@ function showBackAdButton() {
     font-weight: bold;
   `;
 
-  // 🔥 SECOND ADS hanya di CLICK (bukan auto popup)
   btn.onclick = () => {
+
+    // 🔥 ini dianggap USER GESTURE → TIDAK AKAN DI-BLOCK
     window.open(ADS.backAd, "_blank");
+
+    // optional: reload video baru
+    // videoFrame.src = "video lain";
   };
 
   document.body.appendChild(btn);
