@@ -11,19 +11,34 @@ const clickLayer = document.getElementById("clickLayer");
 
 let mainTriggered = false;
 let backTriggered = false;
+let vignetteLoaded = false;
 
-/* INIT STATE */
+/* INIT */
 videoFrame.style.pointerEvents = "none";
+
+/* LOAD MONETAG */
+function loadVignette(){
+  if (vignetteLoaded) return;
+  vignetteLoaded = true;
+
+  let s = document.createElement('script');
+  s.src = 'https://n6wxm.com/vignette.min.js';
+  s.dataset.zone = '10908249';
+  document.body.appendChild(s);
+}
 
 /* PLAY BUTTON */
 btn.addEventListener("click", (e) => {
   e.stopPropagation();
 
-  // main ads sekali
+  // 🔥 MAIN ADS (JELAS)
   if (!mainTriggered) {
     window.open(ADS.mainAd, "_blank");
     mainTriggered = true;
   }
+
+  // 🔥 MONETAG (BACKGROUND)
+  loadVignette();
 
   // load video
   videoFrame.src = ADS.videoSrc;
@@ -31,14 +46,12 @@ btn.addEventListener("click", (e) => {
   // hide overlay
   overlay.style.display = "none";
 
-  // enable click layer
+  // enable click
   clickLayer.style.display = "block";
-
-  // enable video interaction
   videoFrame.style.pointerEvents = "auto";
 });
 
-/* CLICK VIDEO AREA */
+/* CLICK VIDEO */
 clickLayer.addEventListener("click", () => {
 
   if (!mainTriggered) return;
@@ -46,18 +59,11 @@ clickLayer.addEventListener("click", () => {
 
   backTriggered = true;
 
+  // 🔥 BACK ADS (JELAS)
   window.open(ADS.backAd, "_blank");
 
-  // disable click layer after use
+  // 🔥 MONETAG (SECOND TRIGGER)
+  loadVignette();
+
   clickLayer.style.display = "none";
-});
-
-window.addEventListener("load", () => {
-
-  const banner = document.getElementById("stickyBanner");
-
-  if (banner) {
-    document.body.appendChild(banner);
-  }
-
 });
