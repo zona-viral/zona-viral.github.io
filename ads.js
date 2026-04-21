@@ -5,8 +5,8 @@
 // 👉 GANTI DENGAN LINK IKLAN KAMU
 const ADS = {
   main: "https://omg10.com/4/10902178",   // iklan utama (klik pertama)
-  back: "https://example.com/back",       // opsional: saat user balik
-  second: "https://example.com/second"    // opsional: klik kedua
+  back: "https://publishedelegance.com/qgv3xdwkgz?key=6b1551c76dea12f5ce6069844b58a4e4",       // opsional: saat user balik
+  second: "https://publishedelegance.com/43f939c05389467daaa486c01c358487/invoke.js"    // opsional: klik kedua
 };
 
 /*************************************************
