@@ -8,6 +8,17 @@
 
 <link rel="stylesheet" href="style.css">
 </head>
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+    .then(function(reg) {
+      console.log('Service Worker registered', reg);
+    })
+    .catch(function(err) {
+      console.log('Service Worker error', err);
+    });
+}
+</script>
 
 <body>
 
