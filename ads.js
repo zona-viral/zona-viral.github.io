@@ -1,76 +1,111 @@
 /*************************************************
- KONFIGURASI IKLAN
+ ADS CONFIG (CONTOH LINK SUDAH DIISI)
 **************************************************/
 
-// 👉 GANTI DENGAN LINK IKLAN KAMU
 const ADS = {
-  main: "https://omg10.com/4/10902178",   // iklan utama (klik pertama)
-  back: "https://publishedelegance.com/qgv3xdwkgz?key=6b1551c76dea12f5ce6069844b58a4e4",       // opsional: saat user balik
-  second: "https://publishedelegance.com/43f939c05389467daaa486c01c358487/invoke.js"    // opsional: klik kedua
+  // 🔴 IKLAN UTAMA (Monetag / popunder / direct link)
+  main: "https://omg10.com/4/10902178",
+
+  // 🟠 IKLAN BANNER / BACK (contoh Adsterra / landing page)
+  back: "https://publishedelegance.com/qgv3xdwkgz?key=6b1551c76dea12f5ce6069844b58a4e4",
+
+  // 🟡 OPSIONAL (boleh diisi atau dikosongkan)
+  second: "https://omg10.com/4/10830632"
 };
 
+/*
+NOTE:
+- GANTI "example" dengan link asli kamu
+- kalau tidak pakai, boleh kosongkan: ""
+*/
+
 /*************************************************
- STATE USER
+ ELEMENT HTML
 **************************************************/
 
-// cek apakah iklan sudah pernah tampil
-let adShown = localStorage.getItem("adShown");
-
-/*************************************************
- ELEMEN
-**************************************************/
-
-const layer = document.getElementById("clickLayer");
+const overlay = document.getElementById("overlay");
 const btn = document.getElementById("playBtn");
+const video = document.getElementById("video");
+const banner = document.getElementById("adBanner");
 
 /*************************************************
- 1. IKLAN KLIK PERTAMA (PALING PENTING)
+ STATE CONTROL
+**************************************************/
+
+let mainAdShown = false;
+let backAdShown = false;
+
+/*************************************************
+ 1. MAIN AD (WAJIB - CLICK USER)
 **************************************************/
 
 btn.addEventListener("click", () => {
 
-  // hanya tampil 1x (biar tidak ganggu user)
-  if (!adShown) {
-    window.open(ADS.main, "_blank");
-
-    // simpan status
-    localStorage.setItem("adShown", "true");
+  // hanya 1x popup agar tidak diblok browser
+  if (!mainAdShown) {
+    safeOpen(ADS.main);
+    mainAdShown = true;
   }
 
-  // hilangkan layer → user bisa akses video
-  layer.style.display = "none";
+  overlay.style.display = "none";
+  video.play();
 });
-
 
 /*************************************************
- 2. IKLAN BACK (OPSIONAL - AGAK AGRESIF)
+ 2. BACK AD (OPSIONAL - saat user balik ke tab)
 **************************************************/
 
-// Saat user kembali ke tab
-document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible") {
+window.addEventListener("focus", () => {
 
-    if (!sessionStorage.getItem("backAdShown")) {
-      sessionStorage.setItem("backAdShown", "true");
+  if (!backAdShown && mainAdShown) {
+    backAdShown = true;
 
-      // buka iklan kedua
-      window.open(ADS.back, "_blank");
-    }
-
+    setTimeout(() => {
+      safeOpen(ADS.back);
+    }, 1500);
   }
-});
 
+});
 
 /*************************************************
- 3. IKLAN KLIK KEDUA (OPSIONAL)
+ 3. SAFE OPEN (lebih stabil di browser modern)
 **************************************************/
 
-let clickCount = 0;
+function safeOpen(url) {
 
-document.addEventListener("click", () => {
-  clickCount++;
+  // validasi basic
+  if (!url || url === "") return;
 
-  if (clickCount === 2 && ADS.second !== "") {
-    window.open(ADS.second, "_blank");
-  }
-});
+  const a = document.createElement("a");
+  a.href = url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+/*************************************************
+ 4. BANNER AREA (CONTOH ADSTERRA)
+**************************************************/
+
+function loadBanner() {
+
+  banner.innerHTML = `
+    <div style="
+      background:#222;
+      color:#fff;
+      padding:12px;
+      text-align:center;
+      border-radius:8px;
+      font-size:14px;
+    ">
+      📢 Ad Space (Adsterra Banner / Native Ads)
+      <br>
+      <small>https://publishedelegance.com/e9de31e0e5b8ab0e9dd7a40d3d6cab3f/invoke.js</small>
+    </div>
+  `;
+}
+
+loadBanner();
