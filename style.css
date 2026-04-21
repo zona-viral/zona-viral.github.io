@@ -82,14 +82,9 @@ body {
   position: fixed !important;
   bottom: 10px !important;
   left: 10px !important;
-
-  width: 300px;
-  max-width: 90vw;
-
-  z-index: 999 !important; /* cukup tinggi tapi tidak ekstrem */
-  pointer-events: auto;
-  body > .sticky-banner {
   z-index: 999 !important;
+
+  transform: translateZ(0); /* memaksa GPU layer */
 }
 
 /* MOBILE */
