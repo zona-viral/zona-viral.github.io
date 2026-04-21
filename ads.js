@@ -61,4 +61,7 @@ clickLayer.addEventListener("click", () => {
 
   window.open(ADS.backAd, "_blank");
 
+  // 🔥 MATIKAN CLICKLAYER SETELAH DIPAKAI
+  clickLayer.style.display = "none";
+
 });
