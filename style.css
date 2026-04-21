@@ -5,23 +5,25 @@
 }
 
 body {
-  font-family: Inter, sans-serif;
+  font-family: Arial, sans-serif;
   background: #111;
   color: #fff;
 }
 
+/* HEADER */
 .appbar {
   padding: 15px;
   background: #000;
 }
 
 .brand {
-  font-weight: bold;
   font-size: 18px;
+  font-weight: bold;
 }
 
+/* WRAP */
 .wrap {
-  padding: 15px;
+  padding: 20px;
   max-width: 900px;
   margin: auto;
 }
@@ -41,10 +43,20 @@ body {
   width: 100%;
   height: 100%;
   border: none;
+  position: relative;
   z-index: 1;
 }
 
-/* OVERLAY FIX */
+/* CLICK LAYER (AWALNYA NONAKTIF) */
+#clickLayer {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: 5;
+  display: none; /* 🔥 penting */
+}
+
+/* OVERLAY (PALING ATAS) */
 .overlay {
   position: absolute;
   inset: 0;
@@ -54,28 +66,18 @@ body {
   justify-content: center;
   align-items: center;
 
-  z-index: 9999;
+  z-index: 10; /* 🔥 paling atas */
   pointer-events: auto;
 }
 
+/* BUTTON */
 #playBtn {
-  background: red;
-  color: white;
-  border: none;
   padding: 12px 20px;
-  font-size: 16px;
+  background: red;
+  border: none;
+  color: white;
   border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
-  z-index: 10000;
-}
-
-.wrap {
-  padding: 30px;
-}
-
-#clickLayer {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  background: transparent;
+  pointer-events: auto;
 }
