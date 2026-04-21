@@ -1,34 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: #fff;
-}
-
-/* HEADER */
-.appbar {
-  padding: 15px;
-  background: #000;
-}
-
-.brand {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* WRAP */
-.wrap {
-  padding: 20px;
-  max-width: 900px;
-  margin: auto;
-}
-
-/* VIDEO BOX */
 .video-box {
   position: relative;
   width: 100%;
@@ -38,46 +7,47 @@ body {
   overflow: hidden;
 }
 
-/* IFRAME VIDEO */
+/* iframe */
 .video-box iframe {
   width: 100%;
   height: 100%;
   border: none;
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
 }
 
-/* CLICK LAYER (AWALNYA NONAKTIF) */
+/* click layer */
 #clickLayer {
   position: absolute;
   inset: 0;
+  z-index: 2;
+  display: none;
   background: transparent;
-  z-index: 5;
-  display: none; /* 🔥 penting */
 }
 
-/* OVERLAY (PALING ATAS) */
+/* overlay PALING ATAS */
 .overlay {
   position: absolute;
   inset: 0;
+  z-index: 9999; /* 🔥 super tinggi */
+
   background: rgba(0,0,0,0.6);
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  z-index: 10; /* 🔥 paling atas */
   pointer-events: auto;
 }
 
-/* BUTTON */
+/* tombol */
 #playBtn {
-  padding: 12px 20px;
+  padding: 14px 22px;
   background: red;
   border: none;
   color: white;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  pointer-events: auto;
 }
