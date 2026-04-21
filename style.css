@@ -1,43 +1,35 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: #fff;
-  text-align: center;
-}
-
-.container {
-  padding: 20px;
-}
-
-.title {
-  margin-bottom: 15px;
-}
-
-.video {
-  width: 100%;
+.video-box {
+  position: relative;
   max-width: 720px;
-  margin-top: 10px;
+  margin: auto;
+}
+
+video {
+  width: 100%;
   border-radius: 10px;
 }
 
-.play-btn {
-  background: red;
-  color: white;
-  border: none;
+/* overlay tombol palsu */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.5);
+}
+
+#playBtn {
   padding: 12px 20px;
   font-size: 16px;
-  cursor: pointer;
+  border: none;
+  background: red;
+  color: white;
   border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.play-btn:hover {
-  background: darkred;
-}
-
-.ads-box {
-  margin: 20px auto;
-  display: flex;
-  justify-content: center;
+  cursor: pointer;
 }
