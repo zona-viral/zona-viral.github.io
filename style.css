@@ -31,25 +31,23 @@ body {
   margin: auto;
 }
 
-/* VIDEO BOX */
 .video-box {
   position: relative;
   width: 100%;
+  max-width: 400px; /* biar tidak terlalu besar di desktop */
+  margin: auto;
 
-  /* responsive ratio */
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16; /* 🔥 ini kuncinya */
 
   background: black;
   border-radius: 12px;
   overflow: hidden;
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 /* IFRAME */
 .video-box iframe {
   width: 100%;
-  height: 600%;
+  height: 100%;
   border: none;
 }
 
