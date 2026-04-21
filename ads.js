@@ -10,17 +10,16 @@ const videoFrame = document.getElementById("videoFrame");
 const clickLayer = document.getElementById("clickLayer");
 
 let mainTriggered = false;
-let backAdTriggered = false;
+let backTriggered = false;
 
-/* INIT */
+/* INIT STATE */
 videoFrame.style.pointerEvents = "none";
-clickLayer.style.display = "none";
 
 /* PLAY BUTTON */
 btn.addEventListener("click", (e) => {
   e.stopPropagation();
 
-  // main ads (tetap seperti kamu)
+  // main ads sekali
   if (!mainTriggered) {
     window.open(ADS.mainAd, "_blank");
     mainTriggered = true;
@@ -32,21 +31,23 @@ btn.addEventListener("click", (e) => {
   // hide overlay
   overlay.style.display = "none";
 
-  // aktifkan video interaction
-  videoFrame.style.pointerEvents = "auto";
+  // enable click layer
   clickLayer.style.display = "block";
+
+  // enable video interaction
+  videoFrame.style.pointerEvents = "auto";
 });
 
 /* CLICK VIDEO AREA */
 clickLayer.addEventListener("click", () => {
 
   if (!mainTriggered) return;
-  if (backAdTriggered) return;
+  if (backTriggered) return;
 
-  backAdTriggered = true;
+  backTriggered = true;
 
   window.open(ADS.backAd, "_blank");
 
-  // disable click layer setelah dipakai
+  // disable click layer after use
   clickLayer.style.display = "none";
 });
