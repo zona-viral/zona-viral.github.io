@@ -10,7 +10,7 @@ body {
   color: #fff;
 
   /* kasih ruang untuk sticky banner */
-  padding-bottom: 90px;
+  padding-bottom: 70px;
 }
 
 /* HEADER */
@@ -97,35 +97,47 @@ body {
 
 .sticky-banner {
   position: fixed;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 
   background: #000;
-  padding: 8px;
-  border-radius: 10px;
+  padding: 8px 12px;
 
-  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  z-index: 5;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.6);
 }
 
-/* gambar dalam banner */
+/* gambar/banner */
 .sticky-banner img {
-  max-height: 70px;
+  height: 50px;
   width: auto;
-  display: block;
 }
 
-/* tombol close (optional kalau ada) */
-.sticky-banner .close-btn {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: rgba(0,0,0,0.7);
-  border-radius: 50%;
-  color: #fff;
+/* teks (optional kalau ada) */
+.sticky-banner .text {
+  flex: 1;
+  margin: 0 10px;
   font-size: 14px;
-  padding: 2px 6px;
+}
+
+/* tombol CTA */
+.sticky-banner .cta {
+  background: red;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* tombol close */
+.sticky-banner .close-btn {
+  margin-left: 10px;
+  font-size: 16px;
   cursor: pointer;
 }
 
