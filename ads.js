@@ -1,108 +1,75 @@
+/*************************************************
+ ADS CONFIG (EDIT DI SINI SAJA)
+**************************************************/
+
 const ADS = {
   mainAd: "https://omg10.com/4/10902178",
   backAd: "https://omg10.com/4/10830632",
   videoSrc: "https://aceimg.com/upload/?f=c5b01a9e8.mp4"
 };
 
+
+/*************************************************
+ ELEMENT
+**************************************************/
+
 const overlay = document.getElementById("overlay");
 const btn = document.getElementById("playBtn");
 const videoFrame = document.getElementById("videoFrame");
 
-let mainTriggered = false;
 
 /*************************************************
- PLAY BUTTON (MAIN ADS + VIDEO)
+ STATE
 **************************************************/
 
-btn.addEventListener("click", () => {
+let mainTriggered = false;
+let backAdTriggered = false;
 
-  // MAIN ADS (WAJIB USER CLICK)
+
+/*************************************************
+ PLAY BUTTON (MAIN ADS)
+**************************************************/
+
+btn.addEventListener("click", (e) => {
+
+  // 🔥 penting: cegah trigger global click
+  e.stopPropagation();
+
+  // MAIN ADS (1x saja)
   if (!mainTriggered) {
     window.open(ADS.mainAd, "_blank");
     mainTriggered = true;
   }
 
-  // load video
+  // load video iframe
   videoFrame.src = ADS.videoSrc;
 
+  // hilangkan overlay
   overlay.style.display = "none";
 
-  // 🔥 tampilkan tombol back ads (BUKAN AUTO POPUP)
-  showBackAdButton();
 });
 
 
 /*************************************************
- BACK ADS (SAFE - 100% NOT BLOCKED)
-**************************************************/
-function showBackAdButton() {
-
-  if (document.getElementById("backAdBtn")) return;
-
-  const btn = document.createElement("div");
-  btn.id = "backAdBtn";
-
-  btn.innerText = "▶ Klik untuk Video Selanjutnya";
-
-  btn.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: red;
-    color: white;
-    padding: 12px 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    z-index: 99999;
-    font-size: 14px;
-    font-weight: bold;
-  `;
-
-  btn.onclick = () => {
-
-    // 🔥 ini dianggap USER GESTURE → TIDAK AKAN DI-BLOCK
-    window.open(ADS.backAd, "_blank");
-
-    // optional: reload video baru
-    // videoFrame.src = "video lain";
-  };
-
-  document.body.appendChild(btn);
-}
-
-let backAdTriggered = false;
-
-/*************************************************
- GLOBAL CLICK BACK ADS
+ GLOBAL CLICK BACK ADS (VERSI PALING KUAT)
 **************************************************/
 
-document.addEventListener("click", function () {
+document.addEventListener("mousedown", function (e) {
 
-  // hanya aktif setelah mainAd sudah pernah jalan
+  // hanya aktif setelah user klik play
   if (!mainTriggered) return;
 
   // cegah spam
   if (backAdTriggered) return;
 
+  // jangan trigger saat klik tombol play
+  if (e.target.id === "playBtn") return;
+
   backAdTriggered = true;
 
-  window.open(ADS.backAd, "_blank");
+  // delay kecil biar tidak bentrok browser
+  setTimeout(() => {
+    window.open(ADS.backAd, "_blank");
+  }, 100);
 
 }, true);
-
-btn.addEventListener("click", (e) => {
-
-  e.stopPropagation(); // 🔥 penting
-
-  if (!mainTriggered) {
-    window.open(ADS.mainAd, "_blank");
-    mainTriggered = true;
-  }
-
-  videoFrame.src = ADS.videoSrc;
-  overlay.style.display = "none";
-});
-
-setTimeout(() => {
-  backAdTriggered = false;
-}, 2000);
