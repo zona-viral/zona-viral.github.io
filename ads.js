@@ -3,13 +3,12 @@ const ADS = {
   back: "https://omg10.com/4/10830632"
 };
 
-const overlay = document.getElementById("overlay");
 const btn = document.getElementById("playBtn");
+const overlay = document.getElementById("overlay");
 const video = document.getElementById("video");
 
 let shown = false;
 
-/* klik tombol palsu */
 btn.addEventListener("click", () => {
 
   if (!shown) {
@@ -21,7 +20,6 @@ btn.addEventListener("click", () => {
   video.play();
 });
 
-/* back ad */
 window.addEventListener("focus", () => {
   if (shown) {
     setTimeout(() => {
