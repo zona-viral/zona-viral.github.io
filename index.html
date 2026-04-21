@@ -3,52 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZonaViral</title>
+<title>Viral Video</title>
 
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="appbar">
-  <div class="brand">
-    <span class="logo">V</span>
-    <span>Zona-Viral</span>
-  </div>
-</header>
+<div class="container">
 
-<main class="wrap">
+  <div class="video-box">
 
-  <div class="video-container">
-
-    <!-- 
-      OVERLAY LAYER
-      Fungsi:
-      - Menangkap klik pertama user
-      - Karena iframe tidak bisa ditangkap kliknya
-    -->
-    <div id="clickLayer">
-      <button id="playBtn">▶ Tonton Video</button>
+    <!-- OVERLAY (untuk trigger ads) -->
+    <div id="overlay">
+      <button id="playBtn">▶ Play Video</button>
     </div>
 
-    <!-- 
-      IFRAME VIDEO
-      Note:
-      - Tidak bisa dikontrol eventnya
-      - Jadi kita pakai overlay di atasnya
-    -->
-    <iframe
-      src="https://aceimg.com/upload/?f=c5b01a9e8.mp4"
-      width="100%"
-      height="700"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
+    <!-- VIDEO (pakai MP4 direct recommended) -->
+    <video id="video" controls preload="metadata">
+      <source src="https://aceimg.com/upload/?f=c5b01a9e8.mp4">
+    </video>
 
   </div>
 
-</main>
+  <!-- banner area (Adsterra / lainnya) -->
+  <div id="adBanner"></div>
 
+</div>
+
+<!-- SCRIPT ADS DIPISAH -->
 <script src="ads.js"></script>
+
 </body>
 </html>
