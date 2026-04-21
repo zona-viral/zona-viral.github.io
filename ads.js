@@ -1,18 +1,16 @@
 /*************************************************
-  ADS CONFIG (SEMUA LINK DI SINI)
+ ADS CONFIG (EDIT DI SINI SAJA)
 **************************************************/
 
 const ADS = {
-
   mainAd: "https://omg10.com/4/10902178",
   backAd: "https://omg10.com/4/10830632",
-
   videoSrc: "https://aceimg.com/upload/?f=c5b01a9e8.mp4"
 };
 
 
 /*************************************************
-  ELEMENT
+ ELEMENT
 **************************************************/
 
 const overlay = document.getElementById("overlay");
@@ -20,41 +18,49 @@ const btn = document.getElementById("playBtn");
 const videoFrame = document.getElementById("videoFrame");
 
 
+/*************************************************
+ STATE
+**************************************************/
+
 let mainTriggered = false;
-let backTriggered = false;
-let lock = false;
 
 
 /*************************************************
-  PLAY BUTTON
+ PLAY BUTTON
 **************************************************/
 
 btn.addEventListener("click", () => {
 
+  // 🔴 MAIN ADS (1X ONLY)
   if (!mainTriggered) {
     window.open(ADS.mainAd, "_blank");
     mainTriggered = true;
   }
 
+  // LOAD VIDEO
   videoFrame.src = ADS.videoSrc;
 
+  // HIDE OVERLAY
   overlay.style.display = "none";
-    showBackAdButton();
+
+  // SHOW BACK ADS BUTTON
+  setTimeout(showBackAdButton, 500);
+
+});
 
 
 /*************************************************
- BACK ADS (SAFE VERSION - NO BLOCK CHROME)
+ BACK ADS (SAFE BUTTON, NOT BLOCKED CHROME)
 **************************************************/
 
 function showBackAdButton() {
 
-  // cegah dobel tombol
   if (document.getElementById("backAdBtn")) return;
 
   const btn = document.createElement("div");
   btn.id = "backAdBtn";
 
-  btn.innerText = "▶ Lanjut / Bonus Video";
+  btn.innerText = "▶ Lanjut / Bonus";
 
   btn.style.cssText = `
     position: fixed;
