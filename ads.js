@@ -10,14 +10,14 @@ let mainShown = false;
 let backShown = false;
 
 /* PLAY BUTTON */
-btn?.addEventListener("click", () => {
+btn.addEventListener("click", () => {
 
   if (!mainShown) {
     window.open(ADS.main, "_blank");
     mainShown = true;
   }
 
-  video?.play();
+  video.play();
 });
 
 /* BACK AD */
