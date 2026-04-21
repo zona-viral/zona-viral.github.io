@@ -11,23 +11,17 @@
 
 const AD_URL = "https://omg10.com/4/10902178";
 
-const video = document.getElementById("video");
-const btn = document.getElementById("playBtn");
-const overlay = document.getElementById("overlay");
+const layer = document.getElementById("clickLayer");
 
-// cek apakah user sudah lihat iklan
-let adShown = localStorage.getItem("adShown");
+layer.addEventListener("click", () => {
 
-btn.addEventListener("click", () => {
-
-  // buka iklan hanya 1x
-  if (!adShown) {
+  if (!localStorage.getItem("adShown")) {
     window.open(AD_URL, "_blank");
     localStorage.setItem("adShown", "true");
   }
 
-  overlay.style.display = "none";
-  video.play();
+  // setelah klik pertama, biarkan user akses video
+  layer.style.display = "none";
 });
 
 
