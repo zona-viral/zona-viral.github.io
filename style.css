@@ -1,4 +1,74 @@
-/* FIX CLICK LAYER */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+/* HEADER */
+.appbar {
+  padding: 15px;
+  background: #000;
+}
+
+.brand {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* WRAP */
+.wrap {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* VIDEO BOX */
+.video-box {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* IFRAME */
+.video-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 10;
+}
+
+#playBtn {
+  padding: 14px 22px;
+  background: red;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* CLICK LAYER */
 .click-layer {
   position: absolute;
   inset: 0;
@@ -6,18 +76,7 @@
   display: none;
 }
 
-/* FIX OVERLAY TETAP DI ATAS VIDEO */
-.overlay {
-  z-index: 10;
-}
-
-/* FIX VIDEO CONTAINER STACKING */
-.video-box {
-  position: relative;
-  z-index: 1;
-}
-
-/* FIX STICKY BANNER AGAR TIDAK MENUTUP UI */
+/* STICKY BANNER */
 .sticky-banner {
   position: fixed;
   bottom: 10px;
@@ -26,6 +85,14 @@
   width: 300px;
   max-width: 90vw;
 
-  z-index: 100; /* TURUNKAN dari 99999 */
-  pointer-events: auto;
+  z-index: 50; /* penting: jangan tinggi */
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .sticky-banner {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }
 }
