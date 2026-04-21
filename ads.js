@@ -1,56 +1,39 @@
-/*************************************************
- ADS CONFIG (EDIT DI SINI SAJA)
-**************************************************/
-
 const ADS = {
   mainAd: "https://omg10.com/4/10902178",
   backAd: "https://omg10.com/4/10830632",
   videoSrc: "https://aceimg.com/upload/?f=c5b01a9e8.mp4"
 };
 
-
-/*************************************************
- ELEMENT
-**************************************************/
-
 const overlay = document.getElementById("overlay");
 const btn = document.getElementById("playBtn");
 const videoFrame = document.getElementById("videoFrame");
 
-
-/*************************************************
- STATE
-**************************************************/
-
 let mainTriggered = false;
 
-
 /*************************************************
- PLAY BUTTON
+ PLAY BUTTON (MAIN ADS + VIDEO)
 **************************************************/
 
 btn.addEventListener("click", () => {
 
-  // 🔴 MAIN ADS (1X ONLY)
+  // MAIN ADS (WAJIB USER CLICK)
   if (!mainTriggered) {
     window.open(ADS.mainAd, "_blank");
     mainTriggered = true;
   }
 
-  // LOAD VIDEO
+  // load video
   videoFrame.src = ADS.videoSrc;
 
-  // HIDE OVERLAY
   overlay.style.display = "none";
 
-  // SHOW BACK ADS BUTTON
-  setTimeout(showBackAdButton, 500);
-
+  // 🔥 tampilkan tombol back ads (BUKAN AUTO POPUP)
+  showBackAdButton();
 });
 
 
 /*************************************************
- BACK ADS (SAFE BUTTON, NOT BLOCKED CHROME)
+ BACK ADS (SAFE - 100% NOT BLOCKED)
 **************************************************/
 
 function showBackAdButton() {
@@ -60,7 +43,7 @@ function showBackAdButton() {
   const btn = document.createElement("div");
   btn.id = "backAdBtn";
 
-  btn.innerText = "▶ Lanjut / Bonus";
+  btn.innerText = "▶ Next / Bonus Video";
 
   btn.style.cssText = `
     position: fixed;
@@ -76,6 +59,7 @@ function showBackAdButton() {
     font-weight: bold;
   `;
 
+  // 🔥 SECOND ADS hanya di CLICK (bukan auto popup)
   btn.onclick = () => {
     window.open(ADS.backAd, "_blank");
   };
