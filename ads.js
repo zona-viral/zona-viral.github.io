@@ -1,4 +1,5 @@
-/*************************************************
+/*************************************************it
+it
  ADS CONFIG (EDIT DI SINI SAJA)
 **************************************************/
 
@@ -41,7 +42,7 @@ btn.addEventListener("click", (e) => {
     mainTriggered = true;
   }
 
-  if (!mainTriggered) {
+  if (!backAdTriggered) {
     window.open(ADS.backAd, "_blank");
     mainTriggered = true;
   }
