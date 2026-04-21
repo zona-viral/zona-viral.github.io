@@ -8,50 +8,7 @@
 
 <link rel="stylesheet" href="style.css">
 
-<style>
-/* FIX VIDEO FULL */
-.video-box {
-  width: 100%;
-  position: relative;
-}
-
-.video-box iframe {
-  width: 100%;
-  height: 600px; /* bisa kamu ubah */
-  border: none;
-}
-
-/* overlay */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background: rgba(0,0,0,0.5);
-}
-
-.click-layer {
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:5;
-}
-
-/* banner */
-.native-banner {
-  margin: 15px;
-  text-align:center;
-}
-</style>
-
 </head>
-
 <body>
 
 <header class="appbar">
@@ -64,13 +21,11 @@
 
     <iframe id="videoFrame" allowfullscreen></iframe>
 
-    <div id="overlay" class="overlay">
+    <div class="overlay" id="overlay">
       <button id="playBtn">▶ Play Video</button>
     </div>
 
-    <div style="background:red; aspect-ratio:9/16;"></div>
-
-    <div id="clickLayer" class="click-layer"></div>
+    <div class="click-layer" id="clickLayer"></div>
 
   </div>
 
@@ -84,30 +39,6 @@
 </div>
 
 <script src="ads.js"></script>
-
-<!-- ✅ MONETAG VIGNETTE (FIX) -->
-<script>
-function loadVignette(){
-  (function(s){
-    s.dataset.zone='10908249';
-    s.src='https://n6wxm.com/vignette.min.js';
-  })(document.body.appendChild(document.createElement('script')));
-}
-</script>
-
-<!-- ✅ TRIGGER SAAT KLIK VIDEO -->
-<script>
-document.getElementById("clickLayer").addEventListener("click", function(){
-  loadVignette();
-});
-</script>
-
-<!-- ✅ SERVICE WORKER -->
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
-}
-</script>
 
 </body>
 </html>
