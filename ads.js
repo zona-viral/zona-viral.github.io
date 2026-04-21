@@ -1,67 +1,76 @@
-/* =========================================
-   VUDOL ADS.JS
-   File ini berisi semua script iklan
-========================================= */
+/*************************************************
+ KONFIGURASI IKLAN
+**************************************************/
 
+// 👉 GANTI DENGAN LINK IKLAN KAMU
+const ADS = {
+  main: "https://omg10.com/4/10902178",   // iklan utama (klik pertama)
+  back: "https://example.com/back",       // opsional: saat user balik
+  second: "https://example.com/second"    // opsional: klik kedua
+};
 
-// ===============================
-// VIDEO CLICK / PLAY ADS
-// Fungsi: buka iklan saat user klik video (sekali saja)
-// ===============================
+/*************************************************
+ STATE USER
+**************************************************/
 
-const AD_URL = "https://omg10.com/4/10902178";
+// cek apakah iklan sudah pernah tampil
+let adShown = localStorage.getItem("adShown");
+
+/*************************************************
+ ELEMEN
+**************************************************/
 
 const layer = document.getElementById("clickLayer");
+const btn = document.getElementById("playBtn");
 
-layer.addEventListener("click", () => {
+/*************************************************
+ 1. IKLAN KLIK PERTAMA (PALING PENTING)
+**************************************************/
 
-  if (!localStorage.getItem("adShown")) {
-    window.open(AD_URL, "_blank");
+btn.addEventListener("click", () => {
+
+  // hanya tampil 1x (biar tidak ganggu user)
+  if (!adShown) {
+    window.open(ADS.main, "_blank");
+
+    // simpan status
     localStorage.setItem("adShown", "true");
   }
 
-  // setelah klik pertama, biarkan user akses video
+  // hilangkan layer → user bisa akses video
   layer.style.display = "none";
 });
 
 
-// ===============================
-// PAGE CLICK ADS
-// Fungsi: popup iklan saat klik pertama user
-// ===============================
+/*************************************************
+ 2. IKLAN BACK (OPSIONAL - AGAK AGRESIF)
+**************************************************/
 
-document.addEventListener("click", () => {
-  window.open("https://publishedelegance.com/qgv3xdwkgz?key=6b1551c76dea12f5ce6069844b58a4e4", "_blank");
-}, { once: true });
+// Saat user kembali ke tab
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
 
+    if (!sessionStorage.getItem("backAdShown")) {
+      sessionStorage.setItem("backAdShown", "true");
 
-// ===============================
-// TAB FOCUS ADS
-// Fungsi: iklan muncul saat user kembali ke tab (sekali saja)
-// ===============================
+      // buka iklan kedua
+      window.open(ADS.back, "_blank");
+    }
 
-let focusShown = false;
-
-window.addEventListener("focus", () => {
-  if (!focusShown) {
-    focusShown = true;
-    window.open("https://omg10.com/4/10902178", "_blank");
   }
 });
 
 
-// ===============================
-// BANNER ADS (NATIVE / SCRIPT)
-// Fungsi: load banner dari ad network
-// ===============================
+/*************************************************
+ 3. IKLAN KLIK KEDUA (OPSIONAL)
+**************************************************/
 
-const script = document.createElement("script");
-script.async = true;
-script.dataset.cfasync = "false";
-script.src = "https://publishedelegance.com/43f939c05389467daaa486c01c358487/invoke.js";
-document.body.appendChild(script);
+let clickCount = 0;
 
-// container untuk banner
-const container = document.createElement("div");
-container.id = "container-43f939c05389467daaa486c01c358487";
-document.body.appendChild(container);
+document.addEventListener("click", () => {
+  clickCount++;
+
+  if (clickCount === 2 && ADS.second !== "") {
+    window.open(ADS.second, "_blank");
+  }
+});
