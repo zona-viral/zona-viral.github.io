@@ -50,3 +50,6 @@ window.addEventListener("focus", () => {
     focusLock = false;
   }, 5000);
 });
+
+video.setAttribute("crossorigin", "anonymous");
+video.load();
