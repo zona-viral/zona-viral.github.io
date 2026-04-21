@@ -12,24 +12,15 @@ const clickLayer = document.getElementById("clickLayer");
 let mainTriggered = false;
 let backAdTriggered = false;
 
-/*************************************************
- INIT (SUPER PENTING)
-**************************************************/
-
-// saat awal:
-// iframe & clickLayer TIDAK BOLEH TERIMA KLIK
+/* INIT */
 videoFrame.style.pointerEvents = "none";
 clickLayer.style.display = "none";
 
-/*************************************************
- PLAY BUTTON
-**************************************************/
-
+/* PLAY BUTTON */
 btn.addEventListener("click", (e) => {
-
   e.stopPropagation();
 
-  // main ads
+  // main ads (tetap seperti kamu)
   if (!mainTriggered) {
     window.open(ADS.mainAd, "_blank");
     mainTriggered = true;
@@ -38,21 +29,15 @@ btn.addEventListener("click", (e) => {
   // load video
   videoFrame.src = ADS.videoSrc;
 
-  // hilangkan overlay
+  // hide overlay
   overlay.style.display = "none";
 
-  // aktifkan interaksi setelah play
+  // aktifkan video interaction
   videoFrame.style.pointerEvents = "auto";
   clickLayer.style.display = "block";
-  extraPopupAd();
-
 });
 
-
-/*************************************************
- BACK ADS
-**************************************************/
-
+/* CLICK VIDEO AREA */
 clickLayer.addEventListener("click", () => {
 
   if (!mainTriggered) return;
@@ -62,20 +47,6 @@ clickLayer.addEventListener("click", () => {
 
   window.open(ADS.backAd, "_blank");
 
-  // 🔥 MATIKAN CLICKLAYER SETELAH DIPAKAI
+  // disable click layer setelah dipakai
   clickLayer.style.display = "none";
-
 });
-
-/*************************************************
- EXTRA POPUP ADS (1X SAAT PLAY)
-**************************************************/
-
-function extraPopupAd() {
-
-  if (mainTriggered) return; // hanya sebelum play utama
-
-  window.open(ADS.mainAd, "_blank");
-
-  mainTriggered = true;
-}
