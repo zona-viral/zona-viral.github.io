@@ -69,3 +69,40 @@ function showBackAdButton() {
 
   document.body.appendChild(btn);
 }
+
+let backAdTriggered = false;
+
+/*************************************************
+ GLOBAL CLICK BACK ADS
+**************************************************/
+
+document.addEventListener("click", function () {
+
+  // hanya aktif setelah mainAd sudah pernah jalan
+  if (!mainTriggered) return;
+
+  // cegah spam
+  if (backAdTriggered) return;
+
+  backAdTriggered = true;
+
+  window.open(ADS.backAd, "_blank");
+
+}, true);
+
+btn.addEventListener("click", (e) => {
+
+  e.stopPropagation(); // 🔥 penting
+
+  if (!mainTriggered) {
+    window.open(ADS.mainAd, "_blank");
+    mainTriggered = true;
+  }
+
+  videoFrame.src = ADS.videoSrc;
+  overlay.style.display = "none";
+});
+
+setTimeout(() => {
+  backAdTriggered = false;
+}, 2000);
