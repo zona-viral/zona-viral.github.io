@@ -6,9 +6,6 @@ const ADS = {
   // 🔴 IKLAN UTAMA (Monetag / popunder / direct link)
   main: "https://omg10.com/4/10902178",
 
-  // 🟠 IKLAN BANNER / BACK (contoh Adsterra / landing page)
-  back: "https://publishedelegance.com/e9de31e0e5b8ab0e9dd7a40d3d6cab3f/invoke.js",
-
   // 🟡 OPSIONAL (boleh diisi atau dikosongkan)
   second: "https://omg10.com/4/10830632"
 };
@@ -85,27 +82,3 @@ function safeOpen(url) {
   a.click();
   a.remove();
 }
-
-/*************************************************
- 4. BANNER AREA (CONTOH ADSTERRA)
-**************************************************/
-
-function loadBanner() {
-
-  banner.innerHTML = `
-    <div style="
-      background:#222;
-      color:#fff;
-      padding:12px;
-      text-align:center;
-      border-radius:8px;
-      font-size:14px;
-    ">
-      📢 Ad Space (Adsterra Banner / Native Ads)
-      <br>
-      <small>https://publishedelegance.com/e9de31e0e5b8ab0e9dd7a40d3d6cab3f/invoke.js</small>
-    </div>
-  `;
-}
-
-loadBanner();
