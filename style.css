@@ -68,3 +68,7 @@ body {
   cursor: pointer;
   z-index: 10000;
 }
+
+.wrap {
+  padding: 30px;
+}
