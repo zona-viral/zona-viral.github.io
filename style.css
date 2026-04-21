@@ -1,24 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+/* HEADER */
+.appbar {
+  padding: 15px;
+  background: #000;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* WRAP */
+.wrap {
+  padding: 15px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* VIDEO BOX */
 .video-box {
   position: relative;
   width: 100%;
-  max-width: 800px;
-}
-
-video {
-  width: 100%;
-  height: auto;
-  display: block; /* PENTING */
+  height: 500px;
   background: black;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
+/* IFRAME VIDEO */
+.video-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* OVERLAY */
 .overlay {
   position: absolute;
   inset: 0;
+  background: rgba(0,0,0,0.6);
+
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.6);
-  z-index: 10;
 }
 
 #playBtn {
@@ -27,4 +62,11 @@ video {
   border: none;
   color: white;
   border-radius: 8px;
+  font-size: 16px;
+}
+
+/* ADS AREA */
+#native-ad,
+#banner-ad {
+  margin-top: 20px;
 }
