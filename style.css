@@ -91,29 +91,32 @@ body {
   display: none;
 }
 
-/* ========================= */
-/* STICKY BANNER (FIXED) */
-/* ========================= */
-
-.sticky-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+.native-banner {
   width: 100%;
+  margin: 20px 0;
 
-  height: 60px; /* wajib fix height */
   background: #000;
+  padding: 10px;
+  border-radius: 10px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  text-align: center;
+  overflow: hidden;
 
-  z-index: 3;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
 }
 
-/* kompensasi supaya tidak ketutup */
-.wrap {
-  margin-bottom: 70px;
+/* kalau pakai iframe / script */
+.native-banner iframe {
+  width: 100%;
+  height: 90px; /* sesuaikan dari provider iklan */
+  border: none;
+}
+
+/* kalau pakai link biasa */
+.native-banner a {
+  display: block;
+  color: white;
+  text-decoration: none;
 }
 
 /* ========================= */
