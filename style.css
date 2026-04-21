@@ -1,32 +1,25 @@
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: Arial, sans-serif;
   background: #0f0f0f;
   color: white;
 }
 
 .appbar {
+  padding: 12px;
   background: #1a1a1a;
-  padding: 12px 16px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
 }
 
 .logo {
-  background: #ff2e63;
+  background: red;
   padding: 6px 10px;
   border-radius: 6px;
 }
 
 .wrap {
-  padding: 20px;
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 
 .video-container {
@@ -35,35 +28,30 @@ body {
   width: 100%;
 }
 
-video {
-  width: 100%;
-  border-radius: 12px;
-}
-
-/* Overlay */
-#overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-}
-
-#playBtn {
-  background: #ff2e63;
-  border: none;
-  padding: 14px 20px;
-  color: white;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
+/* 
+  LAYER TRANSPARAN
+  Fungsi:
+  - Menutup iframe
+  - Menangkap klik pertama
+*/
 #clickLayer {
   position: absolute;
   inset: 0;
   z-index: 10;
+  background: rgba(0,0,0,0.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* tombol play */
+#playBtn {
+  padding: 14px 20px;
+  background: #ff2e63;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
 }
