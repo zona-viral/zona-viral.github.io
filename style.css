@@ -8,6 +8,9 @@ body {
   font-family: Arial, sans-serif;
   background: #111;
   color: #fff;
+
+  /* kasih ruang untuk sticky banner */
+  padding-bottom: 90px;
 }
 
 /* HEADER */
@@ -31,12 +34,16 @@ body {
 /* VIDEO BOX */
 .video-box {
   position: relative;
-  z-index: 1;
   width: 100%;
-  height: 500px;
+
+  /* responsive ratio */
+  aspect-ratio: 16 / 9;
+
   background: black;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 /* IFRAME */
@@ -59,6 +66,7 @@ body {
   z-index: 10;
 }
 
+/* PLAY BUTTON */
 #playBtn {
   padding: 14px 22px;
   background: red;
@@ -67,9 +75,15 @@ body {
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
-/* CLICK LAYER */
+#playBtn:hover {
+  background: #cc0000;
+  transform: scale(1.05);
+}
+
+/* CLICK LAYER (optional) */
 .click-layer {
   position: absolute;
   inset: 0;
@@ -77,21 +91,64 @@ body {
   display: none;
 }
 
-/* STICKY BANNER */
-.sticky-banner {
-  position: fixed !important;
-  bottom: 10px !important;
-  left: 10px !important;
-  z-index: 999 !important;
+/* ========================= */
+/* STICKY BANNER (FIXED) */
+/* ========================= */
 
-  transform: translateZ(0); /* memaksa GPU layer */
+.sticky-banner {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+
+  background: #000;
+  padding: 8px;
+  border-radius: 10px;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
 }
 
-/* MOBILE */
+/* gambar dalam banner */
+.sticky-banner img {
+  max-height: 70px;
+  width: auto;
+  display: block;
+}
+
+/* tombol close (optional kalau ada) */
+.sticky-banner .close-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 14px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+/* ========================= */
+/* MOBILE OPTIMIZATION */
+/* ========================= */
+
 @media (max-width: 600px) {
+  .wrap {
+    padding: 15px;
+  }
+
+  #playBtn {
+    font-size: 14px;
+    padding: 12px 18px;
+  }
+
   .sticky-banner {
-    width: 100%;
-    left: 0;
-    bottom: 0;
+    max-width: 90%;
+    bottom: 10px;
+  }
+
+  .sticky-banner img {
+    max-height: 60px;
   }
 }
