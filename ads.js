@@ -39,28 +39,40 @@ btn.addEventListener("click", () => {
   videoFrame.src = ADS.videoSrc;
 
   overlay.style.display = "none";
-});
+    showBackAdButton();
 
 
 /*************************************************
-  BACK ADS (ANTI SPAM)
+ BACK ADS (SAFE VERSION - NO BLOCK CHROME)
 **************************************************/
 
-window.addEventListener("focus", () => {
+function showBackAdButton() {
 
-  if (!mainTriggered) return;
-  if (backTriggered) return;
-  if (lock) return;
+  // cegah dobel tombol
+  if (document.getElementById("backAdBtn")) return;
 
-  lock = true;
+  const btn = document.createElement("div");
+  btn.id = "backAdBtn";
 
-  setTimeout(() => {
+  btn.innerText = "▶ Lanjut / Bonus Video";
+
+  btn.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: red;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 99999;
+    font-size: 14px;
+    font-weight: bold;
+  `;
+
+  btn.onclick = () => {
     window.open(ADS.backAd, "_blank");
-    backTriggered = true;
-  }, 1500);
+  };
 
-  setTimeout(() => {
-    lock = false;
-  }, 5000);
-
-});
+  document.body.appendChild(btn);
+}
