@@ -1,66 +1,13 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Video Player</title>
-
-  <link rel="stylesheet" href="style.css">
 </head>
+<body style="background:#111;">
 
-<body>
-
-<div class="container">
-
-  <!-- ================= VIDEO ================= -->
-  <div class="video-box">
-
-    <!-- VIDEO ASLI (STREAM) -->
-  <div class="video-box">
-
-  <video id="video" controls preload="metadata" playsinline>
+  <video controls preload="metadata" playsinline style="width:100%; max-width:800px;">
     <source src="https://aceimg.com/upload/?f=c5b01a9e8.mp4" type="video/mp4">
   </video>
 
-  <div id="overlay" class="overlay">
-    <button id="playBtn">▶ Play Video</button>
-  </div>
-
-</div>
-    
-  <!-- ================= ADS AREA ================= -->
-
-  <!-- 🔵 NATIVE BANNER (Adsterra) -->
-  <div id="native-ad"></div>
-
-  <!-- 🟠 IFRAME BANNER (Adsterra) -->
-  <div id="banner-ad"></div>
-
-</div>
-
-<!-- ADS LOGIC (SEMUA LINK ADA DI SINI) -->
-<script src="ads.js"></script>
-
 </body>
 </html>
-
-<!-- 🔵 NATIVE BANNER (WAJIB DI HTML) -->
-<script async="async" data-cfasync="false"
-src="https://publishedelegance.com/43f939c05389467daaa486c01c358487/invoke.js"></script>
-
-<div id="container-43f939c05389467daaa486c01c358487"></div>
-
-
-<!-- 🟠 IFRAME BANNER -->
-<script>
-  atOptions = {
-    'key' : 'e9de31e0e5b8ab0e9dd7a40d3d6cab3f',
-    'format' : 'iframe',
-    'height' : 300,
-    'width' : 160,
-    'params' : {}
-  };
-</script>
-
-<script src="https://publishedelegance.com/e9de31e0e5b8ab0e9dd7a40d3d6cab3f/invoke.js"></script>
