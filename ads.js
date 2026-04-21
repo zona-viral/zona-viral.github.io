@@ -5,7 +5,7 @@
 
 
 // ===============================
-// VIDEO CLICK ADS
+// VIDEO CLICK / PLAY ADS
 // Fungsi: buka iklan saat user klik video (sekali saja)
 // ===============================
 
@@ -16,16 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const video = document.getElementById("video");
 
   if (video) {
-    video.addEventListener("click", () => {
+    const openAd = () => {
       if (!videoClicked) {
         videoClicked = true;
         window.open(VIDEO_AD, "_blank");
       }
-    });
+    };
+
+    video.addEventListener("click", openAd);
+    video.addEventListener("play", openAd);
   }
 });
-
-
 // ===============================
 // PAGE CLICK ADS
 // Fungsi: popup iklan saat klik pertama user
