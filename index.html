@@ -6,18 +6,14 @@
 <title>ZonaViral</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <header class="appbar">
-  <div class="bar-inner">
-    <div class="brand">
-      <span class="logo">V</span>
-      <span>Zona-Viral</span>
-    </div>
+  <div class="brand">
+    <span class="logo">V</span>
+    <span>Zona-Viral</span>
   </div>
 </header>
 
@@ -25,27 +21,31 @@
 
   <div class="video-container">
 
-    <!-- OVERLAY -->
-    <div id="overlay">
+    <!-- 
+      OVERLAY LAYER
+      Fungsi:
+      - Menangkap klik pertama user
+      - Karena iframe tidak bisa ditangkap kliknya
+    -->
+    <div id="clickLayer">
       <button id="playBtn">▶ Tonton Video</button>
     </div>
 
-    <!-- VIDEO -->
-  <div id="videoWrapper" style="position:relative; max-width:420px; margin:auto;">
+    <!-- 
+      IFRAME VIDEO
+      Note:
+      - Tidak bisa dikontrol eventnya
+      - Jadi kita pakai overlay di atasnya
+    -->
+    <iframe
+      src="https://aceimg.com/upload/?f=c5b01a9e8.mp4"
+      width="100%"
+      height="700"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
 
-  <!-- iframe -->
-  <iframe
-    src="https://aceimg.com/upload/?f=c5b01a9e8.mp4"
-    width="100%"
-    height="700"
-    frameborder="0"
-    allowfullscreen>
-  </iframe>
-
-  <!-- layer transparan -->
-  <div id="clickLayer"></div>
-
-</div>
+  </div>
 
 </main>
 
