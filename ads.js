@@ -1,84 +1,34 @@
-/*************************************************
- ADS CONFIG (CONTOH LINK SUDAH DIISI)
-**************************************************/
-
 const ADS = {
-  // 🔴 IKLAN UTAMA (Monetag / popunder / direct link)
   main: "https://omg10.com/4/10902178",
-
-  // 🟡 OPSIONAL (boleh diisi atau dikosongkan)
-  second: "https://omg10.com/4/10830632"
+  back: "https://omg10.com/4/10830632"
 };
 
-/*
-NOTE:
-- GANTI "example" dengan link asli kamu
-- kalau tidak pakai, boleh kosongkan: ""
-*/
-
-/*************************************************
- ELEMENT HTML
-**************************************************/
-
-const overlay = document.getElementById("overlay");
 const btn = document.getElementById("playBtn");
 const video = document.getElementById("video");
-const banner = document.getElementById("adBanner");
 
-/*************************************************
- STATE CONTROL
-**************************************************/
+let mainShown = false;
+let backShown = false;
 
-let mainAdShown = false;
-let backAdShown = false;
+/* PLAY BUTTON */
+btn?.addEventListener("click", () => {
 
-/*************************************************
- 1. MAIN AD (WAJIB - CLICK USER)
-**************************************************/
-
-btn.addEventListener("click", () => {
-
-  // hanya 1x popup agar tidak diblok browser
-  if (!mainAdShown) {
-    safeOpen(ADS.main);
-    mainAdShown = true;
+  if (!mainShown) {
+    window.open(ADS.main, "_blank");
+    mainShown = true;
   }
 
-  overlay.style.display = "none";
-  video.play();
+  video?.play();
 });
 
-/*************************************************
- 2. BACK AD (OPSIONAL - saat user balik ke tab)
-**************************************************/
-
+/* BACK AD */
 window.addEventListener("focus", () => {
 
-  if (!backAdShown && mainAdShown) {
-    backAdShown = true;
+  if (mainShown && !backShown) {
+    backShown = true;
 
     setTimeout(() => {
-      safeOpen(ADS.back);
+      window.open(ADS.back, "_blank");
     }, 1500);
   }
 
 });
-
-/*************************************************
- 3. SAFE OPEN (lebih stabil di browser modern)
-**************************************************/
-
-function safeOpen(url) {
-
-  // validasi basic
-  if (!url || url === "") return;
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.target = "_blank";
-  a.rel = "noopener noreferrer";
-
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-}
