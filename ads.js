@@ -13,20 +13,25 @@ const VIDEO_AD = "https://omg10.com/4/10902178";
 let videoClicked = false;
 
 document.addEventListener("DOMContentLoaded", () => {
-  const video = document.getElementById("video");
+  const wrapper = document.getElementById("videoWrapper");
 
-  if (video) {
-    const openAd = () => {
-      if (!videoClicked) {
-        videoClicked = true;
-        window.open(VIDEO_AD, "_blank");
-      }
-    };
-
-    video.addEventListener("click", openAd);
-    video.addEventListener("play", openAd);
-  }
+  wrapper.addEventListener("click", () => {
+    if (!videoClicked) {
+      videoClicked = true;
+      window.open(VIDEO_AD, "_blank");
+    }
+  });
 });
+
+const btn = document.getElementById("playBtn");
+const video = document.getElementById("video");
+
+btn.addEventListener("click", () => {
+  window.open(VIDEO_AD, "_blank");
+  video.play();
+});
+
+
 // ===============================
 // PAGE CLICK ADS
 // Fungsi: popup iklan saat klik pertama user
