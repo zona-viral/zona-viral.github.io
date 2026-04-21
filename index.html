@@ -1,53 +1,36 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Player</title>
+const ADS = {
+  main: "https://omg10.com/4/10902178",
+  back: "https://omg10.com/4/10830632"
+};
 
-  <!-- STYLE -->
-  <link rel="stylesheet" href="style.css">
-</head>
+const video = document.getElementById("video");
 
-<body>
+let mainShown = false;
+let backShown = false;
 
-  <div class="container">
+/* 🎬 TRIGGER SAAT VIDEO DIKLIK / DIPLAY */
+function triggerMainAd() {
+  if (!mainShown) {
+    window.open(ADS.main, "_blank");
+    mainShown = true;
+  }
+}
 
-    <!-- HEADER -->
-    <h2 class="title">My Video Player</h2>
+/* CLICK VIDEO */
+video.addEventListener("click", triggerMainAd);
 
-    <!-- PLAY BUTTON -->
-    <button id="playBtn" class="play-btn">▶ Play Video</button>
+/* PLAY EVENT (lebih penting) */
+video.addEventListener("play", triggerMainAd);
 
-    <!-- VIDEO -->
-    <video id="video" controls preload="metadata" class="video">
-      <source src="https://pub-9369d940398a462fa52f1de2377001dc.r2.dev/amaliaputri97361.mp4" type="video/mp4">
-    </video>
+/* BACK AD */
+window.addEventListener("focus", () => {
 
-    <!-- 🟢 BANNER NATIVE ADSTERRA -->
-    <div class="ads-box">
-      <script async="async" data-cfasync="false" src="https://publishedelegance.com/43f939c05389467daaa486c01c358487/invoke.js"></script>
-      <div id="container-43f939c05389467daaa486c01c358487"></div>
-    </div>
+  if (mainShown && !backShown) {
+    backShown = true;
 
-    <!-- 🟠 BANNER ADSTERRA -->
-    <div class="ads-box">
-      <script>
-        atOptions = {
-          'key' : 'e9de31e0e5b8ab0e9dd7a40d3d6cab3f',
-          'format' : 'iframe',
-          'height' : 300,
-          'width' : 160,
-          'params' : {}
-        };
-      </script>
-      <script src="https://publishedelegance.com/e9de31e0e5b8ab0e9dd7a40d3d6cab3f/invoke.js"></script>
-    </div>
+    setTimeout(() => {
+      window.open(ADS.back, "_blank");
+    }, 1500);
+  }
 
-  </div>
-
-  <!-- ADS LOGIC -->
-  <script src="ads.js"></script>
-
-</body>
-</html>
+});
