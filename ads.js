@@ -1,21 +1,17 @@
 ```javascript
 const ADS = {
   mainAd: "https://omg10.com/4/10902178",
-  backAd: "https://omg10.com/4/10830632",
   videoSrc: "https://aceimg.com/upload/?f=c5b01a9e8.mp4"
 };
 
 const overlay = document.getElementById("overlay");
 const btn = document.getElementById("playBtn");
 const videoFrame = document.getElementById("videoFrame");
-const clickLayer = document.getElementById("clickLayer");
 
-let mainTriggered = false;
-let backTriggered = false;
+let adTriggered = false;
 let vignetteLoaded = false;
 
 function loadVignette() {
-
   if (vignetteLoaded) return;
 
   vignetteLoaded = true;
@@ -31,28 +27,21 @@ btn.addEventListener("click", (e) => {
 
   e.stopPropagation();
 
-  if (!mainTriggered) {
+  // Iklan hanya sekali
+  if (!adTriggered) {
     window.open(ADS.mainAd, "_blank");
-    mainTriggered = true;
+    adTriggered = true;
   }
 
+  // Monetag sekali
   loadVignette();
 
+  // Putar video
   videoFrame.src = ADS.videoSrc;
   videoFrame.play();
 
+  // Hilangkan overlay
   overlay.style.display = "none";
-  clickLayer.style.display = "block";
-});
-
-clickLayer.addEventListener("click", () => {
-
-  if (backTriggered) return;
-
-  backTriggered = true;
-
-  window.open(ADS.backAd, "_blank");
-
-  clickLayer.style.display = "none";
 });
 ```
+
