@@ -69,22 +69,5 @@ document.addEventListener("click", function () {
 }, { once: true });
 
 
-```javascript
-// ===== BANNER ADS =====
-
-const bannerContainer = document.getElementById("nativeBanner");
-
-const bannerDiv = document.createElement("div");
-bannerDiv.id = "container-43f939c05389467daaa486c01c358487";
-
-const bannerScript = document.createElement("script");
-bannerScript.async = true;
-bannerScript.setAttribute("data-cfasync", "false");
-bannerScript.src = "https://pl29203326.effectivecpmnetwork.com/43f939c05389467daaa486c01c358487/invoke.js";
-
-bannerContainer.appendChild(bannerScript);
-bannerContainer.appendChild(bannerDiv);
-```
-
 
 
