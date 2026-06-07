@@ -1,67 +1,93 @@
-```css
+
+/* =========================================
+   BASE
+========================================= */
+
 body{
-    margin:0;
-    background:#000;
-    color:#fff;
-    font-family:Arial,sans-serif;
+  margin:0;
+  font-family:Inter;
+  background:#ffffff;
 }
 
+/* =========================================
+   HEADER
+========================================= */
+
 .appbar{
-    background:#111;
-    padding:12px;
-    text-align:center;
+  position:sticky;
+  top:0;
+  background:white;
+  padding:15px;
+  border-bottom:1px solid #eee;
+  z-index:1000;
 }
 
 .brand{
-    font-weight:bold;
+  font-weight:400;
+  display:flex;
+  gap:10px;
+  align-items:center;
 }
+
+.logo{
+  background:white;
+  color:black;
+  padding:5px 10px;
+  border-radius:6px;
+  border:1px solid #ddd;
+}
+
+/* =========================================
+   LAYOUT
+========================================= */
 
 .wrap{
-    padding:10px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
-.video-box{
-    position:relative;
-    width:100%;
-    aspect-ratio:9/16;
-    background:#000;
+.phone{
+  width:350px;
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
 }
+
+/* =========================================
+   PLAYER WRAPPER (PENTING UNTUK OVERLAY)
+========================================= */
+
+#player-wrapper{
+  position:relative;
+  width:100%;
+}
+
+/* iframe video */
+#player-wrapper iframe{
+  width:100%;
+  height:700px;
+  display:block;
+  border:none;
+}
+
+/* =========================================
+   META TEXT
+========================================= */
+
+.meta{
+  margin-top:15px;
+  color:#666;
+  font-size:14px;
+  text-align:center;
+}
+
+/* =========================================
+   OPTIONAL CLEANUP (kalau video dipakai)
+========================================= */
 
 video{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    background:#000;
+  width:100%;
+  display:block;
 }
-
-.overlay{
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:rgba(0,0,0,.5);
-
-    z-index:9999;
-}
-
-#playBtn{
-    padding:15px 25px;
-    font-size:18px;
-    border:none;
-    border-radius:8px;
-    background:#ff2d55;
-    color:white;
-    cursor:pointer;
-}
-
-.native-banner{
-    margin:15px;
-    text-align:center;
-}
-```
