@@ -5,27 +5,12 @@ const ADS = {
 };
 
 const overlay = document.getElementById("overlay");
-const btn = document.getElementById("playBtn");
+const playBtn = document.getElementById("playBtn");
 const videoFrame = document.getElementById("videoFrame");
 
 let adTriggered = false;
-let vignetteLoaded = false;
 
-function loadVignette() {
-  if (vignetteLoaded) return;
-
-  vignetteLoaded = true;
-
-  const s = document.createElement("script");
-  s.src = "https://n6wxm.com/vignette.min.js";
-  s.dataset.zone = "10908249";
-
-  document.body.appendChild(s);
-}
-
-btn.addEventListener("click", (e) => {
-
-  e.stopPropagation();
+playBtn.addEventListener("click", () => {
 
   // Iklan hanya sekali
   if (!adTriggered) {
@@ -33,15 +18,13 @@ btn.addEventListener("click", (e) => {
     adTriggered = true;
   }
 
-  // Monetag sekali
-  loadVignette();
+  // Muat video
+  videoFrame.src = ADS.videoSrc;
 
   // Putar video
-  videoFrame.src = ADS.videoSrc;
   videoFrame.play();
 
-  // Hilangkan overlay
+  // Hilangkan tombol play
   overlay.style.display = "none";
 });
 ```
-
