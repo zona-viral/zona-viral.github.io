@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="id">
 <head>
@@ -7,7 +8,6 @@
 <title>Video Player</title>
 
 <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
@@ -19,7 +19,11 @@
 
   <div class="video-box">
 
-    <iframe id="videoFrame" allowfullscreen></iframe>
+    <video
+      id="videoFrame"
+      controls
+      playsinline
+    ></video>
 
     <div class="overlay" id="overlay">
       <button id="playBtn">▶ Play Video</button>
@@ -31,10 +35,10 @@
 
 </main>
 
-<!-- ✅ NATIVE BANNER -->
 <div class="native-banner">
   <script async data-cfasync="false"
   src="https://publishedelegance.com/43f939c05389467daaa486c01c358487/invoke.js"></script>
+
   <div id="container-43f939c05389467daaa486c01c358487"></div>
 </div>
 
@@ -42,3 +46,4 @@
 
 </body>
 </html>
+```
