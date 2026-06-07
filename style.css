@@ -61,12 +61,6 @@ body{
   cursor:pointer;
 }
 
-.click-layer{
-  display:none;
-  z-index:5;
-  cursor:pointer;
-}
-
 .native-banner{
   margin:15px;
   text-align:center;
