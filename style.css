@@ -1,72 +1,74 @@
-body {
-  margin: 0;
-  background: #000;
-  font-family: Arial, sans-serif;
-  color: #fff;
+```css
+body{
+  margin:0;
+  background:#000;
+  color:#fff;
+  font-family:Arial,sans-serif;
 }
 
-/* header */
-.appbar {
-  padding: 10px;
-  background: #111;
-  text-align: center;
+.appbar{
+  padding:10px;
+  background:#111;
+  text-align:center;
 }
 
-.brand {
-  font-weight: bold;
+.brand{
+  font-weight:bold;
 }
 
-/* layout */
-.wrap {
-  padding: 10px;
+.wrap{
+  padding:10px;
 }
 
-/* VIDEO PORTRAIT FIX */
-.video-box {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 9 / 16;
-  background: black;
-  overflow: hidden;
+.video-box{
+  position:relative;
+  width:100%;
+  aspect-ratio:9/16;
+  background:#000;
+  overflow:hidden;
 }
 
-/* paksa semua isi full */
-.video-box iframe,
-.video-box .overlay,
-.video-box .click-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.video-box video,
+.overlay,
+.click-layer{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
 }
 
-/* overlay */
-.overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0,0,0,0.6);
-  z-index: 2;
+.video-box video{
+  object-fit:contain;
+  background:#000;
 }
 
-#playBtn {
-  padding: 12px 20px;
-  font-size: 18px;
-  border: none;
-  background: #ff2d55;
-  color: #fff;
-  border-radius: 6px;
+.overlay{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.6);
+  z-index:10;
 }
 
-/* click layer */
-.click-layer {
-  z-index: 3;
-  cursor: pointer;
+#playBtn{
+  padding:12px 20px;
+  font-size:18px;
+  border:none;
+  border-radius:6px;
+  background:#ff2d55;
+  color:#fff;
+  cursor:pointer;
 }
 
-/* banner */
-.native-banner {
-  margin: 15px;
-  text-align: center;
+.click-layer{
+  display:none;
+  z-index:5;
+  cursor:pointer;
 }
+
+.native-banner{
+  margin:15px;
+  text-align:center;
+}
+```
