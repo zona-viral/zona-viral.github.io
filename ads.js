@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 ========================================= */
 
 const CLICK_AD =
-"https://mistletoeframesethel.com/njwe0qwps?key=404e45db2f424f77242f60d282efadc7";
+"https://www.effectivecpmnetwork.com/xg00u12irv?key=4565fd8f1e407232c904656b850397a5";
 
 let firstClick = false;
 
@@ -69,21 +69,4 @@ document.addEventListener("click", function () {
 }, { once: true });
 
 
-/* =========================================
-   DELAY IKLAN 5 DETIK
-========================================= */
 
-const DELAY_AD =
-"https://omg10.com/4/11037669";
-
-setTimeout(function () {
-
-  const win = window.open("", "_blank");
-
-  if (win) {
-    setTimeout(function () {
-      win.location.href = DELAY_AD;
-    }, 300);
-  }
-
-}, 5000);
