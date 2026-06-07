@@ -71,6 +71,7 @@ document.addEventListener("click", function () {
 
 ```javascript
 // ===== BANNER ADS =====
+
 const bannerContainer = document.getElementById("nativeBanner");
 
 const bannerDiv = document.createElement("div");
